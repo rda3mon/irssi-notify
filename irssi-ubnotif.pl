@@ -16,11 +16,9 @@ $VERSION = '1.0.0';
 	authors				=> 'Mallikarjun',
 	contact				=> 'arjun@rdaemon.com',
 	name					=> 'irssi-notify',
-	description		=> 'Ubuntu notifications'.
-										' for irssi',
-	license				=> 'BSD',
-	url						=> 'http://www.google.com',
-	changed				=> 'Wed Oct 31 2012',
+	description		=> 'Ubuntu notifications for irssi irc',
+	license				=> 'Public Domain',
+	changed				=> 'Mon Oct 29 2012',
 );
 
 my $NAME = $IRSSI{name};
