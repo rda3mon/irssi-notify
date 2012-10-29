@@ -21,12 +21,8 @@ $VERSION = '1.0.0';
 	changed				=> 'Mon Oct 29 2012',
 );
 
-my $NAME = $IRSSI{name};
-
-# Add your nicks here
 my $last_sent = 0;
 
-######################################################
 sub notify_user {
 	my ($server, $channel, $sender, $msg) = @_;
 
