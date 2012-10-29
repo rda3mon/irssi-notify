@@ -24,20 +24,21 @@ $VERSION = '1.0.0';
 );
 
 my $NAME = $IRSSI{name};
-my $last_call = 0;
+
+# Add your nicks here
+my $last_sent = 0;
 
 ######################################################
 sub notify_user {
 	my ($server, $channel, $sender, $msg) = @_;
 
 	my $command = "notify-send -i ~/.irssi/scripts/images/irssi.png Irssi::$channel \"$sender - $msg\"";
-	system($command);
 
-	my $time = timelocal(
-
-
-
-
+	my $now = time();
+	if(($now - $last_sent) > 30){
+		system($command);
+		$last_sent = $now;
+	}
 }
 
 sub handle_print_text {
@@ -51,36 +52,15 @@ sub handle_print_text {
 	my $msg = $msg_info;
 	my $channel = $dest->{target};
 
-	
-
 	$channel =~ s/^#//;
 	$sender =~ s/^<.//;
 	$sender =~ s/>[\s\t].*//;
 	$msg =~ s/^<.[\w]+>[\s\t]//;
+	$msg = substr($msg, 0, 10);
 
-	for my $nick (@nicks) {
-		return if ($nick eq $sender);
-	}
+	return if ($sender eq $server->{nick});
 	notify_user($server, $channel, $sender, $msg);
 }
 
 	
 Irssi::signal_add('print text', \&handle_print_text);
-
-
-
-##################################################################33
-
-#Irssi::command_bind test => \&test;
-#sub test {
-#	my $file;
-#	open($file, '>>/home/mallikarjun/testing');
-#	print $file 'hello\n';
-#	close($file);
-#
-#	my ($data, $server, $witem) = @_;
-#	return unless $witem;
-#	$witem->print('It Works!');
-#}
-
-
