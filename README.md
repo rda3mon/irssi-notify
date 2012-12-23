@@ -1,7 +1,7 @@
 irssi-notify
 ============
 
-Perl script for irssi irc notifications for Ubuntu.
+Perl irssi script for Ubuntu notifications.
 
 Installation
 ============
